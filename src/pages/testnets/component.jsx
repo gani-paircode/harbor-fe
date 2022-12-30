@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { fetchTestNets } from './apiService';
 import { TestNetsList } from './TestNetsList';
 

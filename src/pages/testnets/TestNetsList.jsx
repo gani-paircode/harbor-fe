@@ -1,14 +1,51 @@
 import * as React from 'react';
 import TestNetCard from '../../components/TestNetCard';
-import '';
+import { SortCriteria, SortByOptions, FiterCriteria, FilterOptions } from './constants';
+import './testnets.css';
+
+const DefaultSortOption = SortCriteria.status;
+const DefaultFilterOption = FiterCriteria.ALL;
 
 export const TestNetsList = (props) => {
-    console.log('hiii ', props.data);
-    // const { testnet } = props.data;
+    const [sortBy, setSortBy] = React.useState(DefaultSortOption);
+    const [filterBy, setFilterBy] = React.useState(DefaultFilterOption);
+
+    const { testnet } = props.data;
+    const handleSortBy = (event) => {
+        setSortBy(event.target.value);
+    };
+
+    const handleFilterBy = (event) => {
+        setFilterBy(event.target.value);
+    }
+
+    const displayRecords = React.useMemo(() => {
+        if (sortBy === DefaultSortOption && filterBy === DefaultFilterOption) {
+            return testnet;
+        }
+        return [testnet[0], testnet[1]];
+    }, [sortBy, filterBy, testnet]);
+
     return (<div id="testnets">
-        <div className='title'>Testnets ({6})</div>
+        <div className='title'>Testnets ({testnet.length})</div>
+        <select value={sortBy} onChange={handleSortBy}>
+            {
+                SortByOptions.map(item => <option key={item.key} value={item.key}>
+                    {item.display}
+                </option>)
+            }
+        </select>
+
+        <select value={filterBy} onChange={handleFilterBy}>
+            {
+                FilterOptions.map(item => (<option key={item.key} value={item.key}>
+                    {item.display}
+                </option>))
+            }
+        </select>
+    
         {
-            // testnet.map(item => <TestNetCard key={item.id} data={item}/>)
+            displayRecords.map(item => <TestNetCard key={item.id} data={item} />)
         }
     </div>);
 }

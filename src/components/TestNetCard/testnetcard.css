@@ -1,0 +1,61 @@
+div.testNetCardContainer {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding: 26px 32px;
+
+    width: 1076px;
+    height: 112px;
+
+    background: #FFFFFF;
+    /* Grey E5 */
+
+    border: 1px solid #E5E5E5;
+    /* Shadow/Card/Medium */
+
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    
+    /* Inside auto layout */
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+    justify-content: space-between;
+}
+
+div.testNetCardContainer div.testNetCardTitle {
+    /* Text */
+    /* width: 157px; This varies... so commented out */
+    height: 24px;
+
+    /* Work Sans / Bold / 20px */
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    /* identical to box height, or 120% */
+    text-align: center;
+    
+    /* Black 100% */
+    color: #000000;
+}
+
+div.testNetCardContainer div.num {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2px 12px;
+
+    margin-left: 1rem;
+    /* width: 54px; */
+    height: 28px;
+
+    /* Grey F6 */
+    justify-content: center;
+    background: #F6F6F6;
+    border-radius: 40px;
+}
