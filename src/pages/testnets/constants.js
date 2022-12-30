@@ -2,8 +2,9 @@
 export const SortCriteria = {
     'nameAsc': 'nameAsc',
     'nameDesc': 'nameDesc',
-    'status': 'status',
-    'dateAsc': 'dateAsc',
+    'statusAsc': 'statusAsc',
+    'statusDesc': 'statusDesc',
+    'date': 'date',
     'lastModified': 'lastModified',
 }
 export const SortByOptions = [
@@ -16,11 +17,15 @@ export const SortByOptions = [
         display: 'Name Z-A'
     },
     {
-        key: SortCriteria.status,
-        display: 'Status'
+        key: SortCriteria.statusAsc,
+        display: 'Status A-Z'
     },
     {
-        key: SortCriteria.dateAsc,
+        key: SortCriteria.statusDesc,
+        display: 'Status Z-A'
+    },
+    {
+        key: SortCriteria.date,
         display: 'Date Created'
     },
     {
@@ -36,6 +41,7 @@ export const FiterCriteria = {
     UPDATING: 'UPDATING',
     FAILED: 'FAILED',
     KILLED: 'KILLED',
+    STOPPED: 'STOPPED',
 };
 
 export const FilterOptions = [
@@ -46,7 +52,12 @@ export const FilterOptions = [
     {
         key: FiterCriteria.RUNNING,
         display: 'Running',
-    },{
+    },
+    {
+        key: FiterCriteria.STOPPED,
+        display: 'Stopped',
+    },
+    {
         key: FiterCriteria.STANDINGUP,
         display: 'Standing Up',
     },{

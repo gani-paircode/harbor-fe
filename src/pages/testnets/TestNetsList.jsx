@@ -1,9 +1,10 @@
 import * as React from 'react';
 import TestNetCard from '../../components/TestNetCard';
 import { SortCriteria, SortByOptions, FiterCriteria, FilterOptions } from './constants';
+import { getSortedTests } from './helper';
 import './testnets.css';
 
-const DefaultSortOption = SortCriteria.status;
+const DefaultSortOption = SortCriteria.statusAsc;
 const DefaultFilterOption = FiterCriteria.ALL;
 
 export const TestNetsList = (props) => {
@@ -20,14 +21,15 @@ export const TestNetsList = (props) => {
     }
 
     const displayRecords = React.useMemo(() => {
-        if (sortBy === DefaultSortOption && filterBy === DefaultFilterOption) {
-            return testnet;
-        }
-        return [testnet[0], testnet[1]];
+        /* by default we are not getting sorted data by status */
+        return getSortedTests({
+            data: testnet,
+            sortBy, filterBy
+        });
     }, [sortBy, filterBy, testnet]);
 
     return (<div id="testnets">
-        <div className='title'>Testnets ({testnet.length})</div>
+        <div className='title'>Testnets ({displayRecords.length})</div>
         <select value={sortBy} onChange={handleSortBy}>
             {
                 SortByOptions.map(item => <option key={item.key} value={item.key}>
@@ -43,7 +45,6 @@ export const TestNetsList = (props) => {
                 </option>))
             }
         </select>
-    
         {
             displayRecords.map(item => <TestNetCard key={item.id} data={item} />)
         }
